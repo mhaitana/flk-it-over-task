@@ -1,4 +1,4 @@
-# README #
+# README
 
 Frontend interview task for FLK It Over.
 
