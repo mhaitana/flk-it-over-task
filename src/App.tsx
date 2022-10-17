@@ -6,44 +6,10 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 
-import { InputField } from './Input';
-import type { Input } from './types/Input';
+import InputField from './components/InputField';
+import { formValues, inputFields } from './constants';
 
 import './App.css';
-
-const inputFields: Input[] = [
-  {
-    component: 'input',
-    label: 'Text field',
-    name: 'textField',
-    type: 'text'
-  },
-  {
-    component: 'input',
-    label: 'Number field',
-    name: 'numberField',
-    type: 'number'
-  },
-  {
-    component: 'input',
-    label: 'Date field',
-    name: 'dateField',
-    type: 'date'
-  },
-  {
-    component: 'textarea',
-    label: 'Multiline field',
-    name: 'multilineField',
-    type: 'text'
-  }
-];
-
-const formValues = {
-  textField: 'text',
-  numberField: '1234',
-  dateField: '2022-10-18',
-  multilineField: 'multi\nline'
-};
 
 function App() {
   return (

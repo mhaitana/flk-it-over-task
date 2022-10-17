@@ -12,9 +12,9 @@ import React from 'react';
 import { Field } from 'react-final-form';
 import type { SupportedInputs } from 'react-final-form';
 
-import type { InputFieldProps, InputProps, InputFieldReturn, InputReturn } from './types/Input';
+import type { InputFieldProps, InputProps, InputFieldReturn, InputReturn } from '../types/Input';
 
-import './Input.css';
+import './InputField.css';
 
 // react-final-form provides an input prop that contains name, onBlur, onChange, onFocus, and value
 const Default: InputReturn = ({ label, input }: InputProps) => (
@@ -46,4 +46,4 @@ const InputField: InputFieldReturn = ({ component, name, label, type }: InputFie
   return <Field type={type} component={getComponent(component)} label={label} name={name} />;
 };
 
-export { InputField };
+export default InputField;
