@@ -7,11 +7,11 @@ import React from 'react';
 import { Form } from 'react-final-form';
 
 import { InputField } from './Input';
-import type { TInputField } from './types/Input';
+import type { Input } from './types/Input';
 
 import './App.css';
 
-const inputFields: TInputField[] = [
+const inputFields: Input[] = [
   {
     component: 'input',
     label: 'Text field',

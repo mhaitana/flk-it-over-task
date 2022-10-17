@@ -10,46 +10,40 @@
 
 import React from 'react';
 import { Field } from 'react-final-form';
-import type { FieldInputProps, SupportedInputs } from 'react-final-form';
+import type { SupportedInputs } from 'react-final-form';
 
-import type { TInputType } from './types/Input';
+import type { InputFieldProps, InputProps, InputFieldReturn, InputReturn } from './types/Input';
 
 import './Input.css';
 
-interface InputProps {
-  input: FieldInputProps<any, HTMLElement>;
-  label?: string;
-}
-
-interface InputFieldProps {
-  component: SupportedInputs;
-  name: string;
-  type: TInputType;
-  label?: string;
-}
-
 // react-final-form provides an input prop that contains name, onBlur, onChange, onFocus, and value
-const Default = ({ label, input }: InputProps) => (
+const Default: InputReturn = ({ label, input }: InputProps) => (
   <div className="input-container">
     {label && <label>{label}</label>}
     <input {...input} />
   </div>
 );
 
-const Multiline = ({ label, input }: InputProps) => (
+const Textarea: InputReturn = ({ label, input }: InputProps) => (
   <div className="input-container">
     {label && <label>{label}</label>}
     <textarea {...input} />
   </div>
 );
 
-const InputField = ({ component, name, label, type }: InputFieldProps) => (
-  <Field
-    type={type}
-    component={component === 'input' ? Default : Multiline}
-    label={label}
-    name={name}
-  />
-);
+const InputField: InputFieldReturn = ({ component, name, label, type }: InputFieldProps) => {
+  const getComponent = (supportedInput: SupportedInputs) => {
+    let component: InputReturn;
+    switch (supportedInput) {
+      case 'textarea':
+        component = Textarea;
+      default:
+        component = Default;
+    }
+    return component;
+  };
+
+  return <Field type={type} component={getComponent(component)} label={label} name={name} />;
+};
 
 export { InputField };

@@ -1,10 +1,20 @@
-import type { SupportedInputs } from 'react-final-form';
+import type { FieldInputProps, SupportedInputs } from 'react-final-form';
 
-export type TInputType = 'text' | 'number' | 'date';
+export type InputType = 'text' | 'number' | 'date';
 
-export type TInputField = {
+export type Input = {
   component: SupportedInputs;
   name: string;
-  type: TInputType;
+  type: InputType;
   label?: string;
 };
+
+export interface InputProps {
+  input: FieldInputProps<any, HTMLElement>;
+  label?: string;
+}
+
+export interface InputFieldProps extends Input {}
+
+export type InputReturn = ({ label, input }: InputProps) => JSX.Element;
+export type InputFieldReturn = ({ component, name, label, type }: InputFieldProps) => JSX.Element;
