@@ -37,8 +37,10 @@ const InputField: InputFieldReturn = ({ component, name, label, type }: InputFie
     switch (supportedInput) {
       case 'textarea':
         component = Textarea;
+        break;
       default:
         component = Default;
+        break;
     }
     return component;
   };
